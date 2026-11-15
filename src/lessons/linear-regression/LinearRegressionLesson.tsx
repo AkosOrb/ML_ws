@@ -3,7 +3,7 @@ import { ButtonRow, Slider, Toggle } from '../../components/Controls';
 import { LessonLayout, type LessonSection } from '../../components/LessonLayout';
 import { useLang } from '../../i18n/i18n';
 import { generateData, gradientStep, mse, TRUE_PLANE, type Plane } from '../../ml/linearRegression';
-import { LossChart } from './LossChart';
+import { LossChart } from '../../components/LossChart';
 import { RegressionScene } from './RegressionScene';
 
 const START: Plane = { w1: 0, w2: 0, b: 0 };
