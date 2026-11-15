@@ -1,0 +1,26 @@
+import { Suspense } from 'react';
+import { Header } from './components/Header';
+import { Home } from './components/Home';
+import { findLesson } from './lessons/registry';
+import { useHashRoute } from './useHashRoute';
+
+export function App() {
+  const route = useHashRoute();
+  const lesson = route.name === 'lesson' ? findLesson(route.id) : undefined;
+  const Lesson = lesson?.component;
+
+  return (
+    <>
+      <Header />
+      <main>
+        {Lesson ? (
+          <Suspense fallback={<div className="loading">…</div>}>
+            <Lesson />
+          </Suspense>
+        ) : (
+          <Home />
+        )}
+      </main>
+    </>
+  );
+}
