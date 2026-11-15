@@ -1,5 +1,6 @@
 import { useLang } from '../i18n/i18n';
 import { categories, lessons } from '../lessons/registry';
+import { reviews } from '../lessons/quizzes';
 import { lessonHref } from '../useHashRoute';
 
 export function scrollToCategory(id: string) {
@@ -12,7 +13,15 @@ export function scrollToCategory(id: string) {
 
 export function Footer() {
   const { pick, lang, setLang } = useLang();
-  const first = lessons.find((l) => l.component);
+  const built = lessons.filter((l) => l.component);
+  const first = built[0];
+  const questions = built.reduce((n, l) => n + (reviews[l.id]?.quiz.length ?? 0), 0);
+  const facts: [number, { hu: string; en: string }][] = [
+    [built.length, { hu: 'interaktív lecke', en: 'interactive lessons' }],
+    [categories.length, { hu: 'tanulási terület', en: 'learning areas' }],
+    [questions, { hu: 'kvízkérdés', en: 'quiz questions' }],
+    [2, { hu: 'nyelv: magyar és angol', en: 'languages: Hungarian & English' }],
+  ];
   return (
     <footer className="site-footer">
       <div className="footer-grid">
@@ -28,13 +37,11 @@ export function Footer() {
           </div>
         </div>
         <ul className="footer-nav">
-          {categories.map((c) => (
-            <li key={c.id}>
-              <button onClick={() => scrollToCategory(c.id)}>
-                {pick(c.title)} <span>→</span>
-              </button>
-            </li>
-          ))}
+          <li>
+            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+              {pick({ hu: 'Vissza az oldal tetejére', en: 'Back to top' })} <span>↑</span>
+            </button>
+          </li>
           <li>
             <a href="https://github.com/AkosOrb/ML_ws" target="_blank" rel="noreferrer">
               {pick({ hu: 'Forráskód', en: 'Source code' })} <span>↗</span>
@@ -42,6 +49,14 @@ export function Footer() {
           </li>
         </ul>
       </div>
+      <dl className="footer-facts">
+        {facts.map(([n, label]) => (
+          <div key={label.en}>
+            <dt>{n}</dt>
+            <dd className="label">{pick(label)}</dd>
+          </div>
+        ))}
+      </dl>
       <div className="footer-bottom label">
         <span>© 2026 ML {pick({ hu: 'műhely', en: 'Workshop' })}</span>
         <button className="footer-lang label" onClick={() => setLang(lang === 'hu' ? 'en' : 'hu')}>

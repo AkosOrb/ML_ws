@@ -1,6 +1,5 @@
 import { useLang } from '../i18n/i18n';
 import { categories, lessons } from '../lessons/registry';
-import { reviews } from '../lessons/quizzes';
 import { lessonHref } from '../useHashRoute';
 import { useScores } from '../progress';
 import { HeroArt } from './HeroArt';
@@ -42,7 +41,6 @@ export function Home() {
   const { t, pick } = useLang();
   const scores = useScores();
   const built = lessons.filter((l) => l.component);
-  const questions = built.reduce((n, l) => n + (reviews[l.id]?.quiz.length ?? 0), 0);
   const first = built[0];
   let counter = 0;
 
@@ -90,19 +88,27 @@ export function Home() {
       </section>
 
       <section className="stats dark">
-        <div className="stat-grid">
-          {[
-            [built.length, pick({ hu: 'Interaktív lecke', en: 'Interactive lessons' })],
-            [categories.length, pick({ hu: 'Tanulási terület', en: 'Learning areas' })],
-            [questions, pick({ hu: 'Kvízkérdés', en: 'Quiz questions' })],
-            ['2', pick({ hu: 'Nyelv: magyar és angol', en: 'Languages: Hungarian & English' })],
-          ].map(([n, label], i) => (
-            <div className="stat cut" key={i}>
-              <b>{n}</b>
-              <span className="label">{label}</span>
-            </div>
-          ))}
-        </div>
+        <nav className="stat-grid" aria-label={pick({ hu: 'Tanulási területek', en: 'Learning areas' })}>
+          {categories.map((cat, ci) => {
+            const inCat = built.filter((l) => l.category === cat.id);
+            const done = inCat.filter((l) => scores[l.id]).length;
+            return (
+              <button key={cat.id} className="stat area cut" onClick={() => scrollToCategory(cat.id)}>
+                <span className="area-top label">
+                  <span>
+                    {String(ci + 1).padStart(2, '0')} / {String(categories.length).padStart(2, '0')}
+                  </span>
+                  <span aria-hidden>↓</span>
+                </span>
+                <b>{pick(cat.title)}</b>
+                <span className="label">
+                  {inCat.length} {pick({ hu: 'lecke', en: inCat.length === 1 ? 'lesson' : 'lessons' })}
+                  {done > 0 && ` · ${pick({ hu: 'kvíz kész', en: 'quizzes done' })}: ${done}/${inCat.length}`}
+                </span>
+              </button>
+            );
+          })}
+        </nav>
         <div className="stat-text cut">
           <h2>{pick({ hu: 'Képletek helyett először kép.', en: 'Pictures first, formulas second.' })}</h2>
           <p>
