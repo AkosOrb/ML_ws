@@ -19,7 +19,7 @@ function MapBars({ img, center, color, scale }: { img: Img; center: [number, num
     const mesh = ref.current;
     if (!mesh) return;
     const n = img.size;
-    const base = new THREE.Color('#1c2335');
+    const base = new THREE.Color('#2b2b2b');
     const top = new THREE.Color(color);
     for (let i = 0; i < n * n; i++) {
       const v = Math.min(1, Math.abs(img.px[i]) / (scale || 1));
@@ -97,11 +97,11 @@ export function CnnScene({ input, maps, probe, labels }: Props) {
   const spanZ = Math.max(8, K * 6.2);
   return (
     <Canvas camera={{ position: [-3, 9 + spanZ * 0.35, 9 + spanZ * 0.45], fov: 45 }} dpr={[1, 2]}>
-      <color attach="background" args={['#0f1320']} />
+      <color attach="background" args={['#1c1c1c']} />
       <AdaptiveFov />
       <ambientLight intensity={0.7} />
       <directionalLight position={[3, 12, 6]} intensity={1.1} />
-      <MapBars img={input} center={INPUT_C} color="#e8ecf6" scale={1} />
+      <MapBars img={input} center={INPUT_C} color="#f3f1ec" scale={1} />
       <Frame center={INPUT_C} cells={3} offset={[(probe.x - inN / 2) * CELL, (probe.y - inN / 2) * CELL]} />
       <TextSprite text={labels.input} position={[INPUT_C[0], 0.2, INPUT_C[1] + inN * CELL * 0.5 + 0.9]} size={0.6} />
       {maps.map((m, k) => {

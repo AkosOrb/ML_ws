@@ -202,7 +202,7 @@ export default function KMeansLesson() {
       scene={
         <PointCloudScene>
           <Points points={points} colors={colors} />
-          {segs.length > 0 && <Segments points={segs} color="#9aa7c7" opacity={0.18} />}
+          {segs.length > 0 && <Segments points={segs} color="#b3b3b3" opacity={0.18} />}
           {state.centroids.map((c, j) => (
             <Centroid key={j} target={c} color={CLUSTER_COLORS[j % CLUSTER_COLORS.length]} />
           ))}

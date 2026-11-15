@@ -54,3 +54,8 @@ export function useLang(): LanguageContextValue {
   if (!ctx) throw new Error('useLang must be used inside LanguageProvider');
   return ctx;
 }
+
+/** Hungarian writes decimals with a comma: 0.30 → 0,30. Applied to numbers shown in the UI. */
+export function localizeNumbers(text: string, lang: Lang): string {
+  return lang === 'hu' ? text.replace(/(\d)\.(\d)/g, '$1,$2') : text;
+}

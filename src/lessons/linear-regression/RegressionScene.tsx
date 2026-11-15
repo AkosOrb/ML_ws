@@ -106,10 +106,10 @@ function Axes({ labels }: { labels: Props['axisLabels'] }) {
   const yMax = 6;
   return (
     <group>
-      <gridHelper args={[DOMAIN * 2, 12, '#3a4460', '#262d40']} position={[0, yMin, 0]} />
-      <arrowHelper args={[new THREE.Vector3(1, 0, 0), new THREE.Vector3(-L, yMin, -L), L * 2, '#9aa7c7', 0.25, 0.15]} />
-      <arrowHelper args={[new THREE.Vector3(0, 0, 1), new THREE.Vector3(-L, yMin, -L), L * 2, '#9aa7c7', 0.25, 0.15]} />
-      <arrowHelper args={[new THREE.Vector3(0, 1, 0), new THREE.Vector3(-L, yMin, -L), yMax - yMin, '#9aa7c7', 0.25, 0.15]} />
+      <gridHelper args={[DOMAIN * 2, 12, '#4a4a4a', '#333333']} position={[0, yMin, 0]} />
+      <arrowHelper args={[new THREE.Vector3(1, 0, 0), new THREE.Vector3(-L, yMin, -L), L * 2, '#b3b3b3', 0.25, 0.15]} />
+      <arrowHelper args={[new THREE.Vector3(0, 0, 1), new THREE.Vector3(-L, yMin, -L), L * 2, '#b3b3b3', 0.25, 0.15]} />
+      <arrowHelper args={[new THREE.Vector3(0, 1, 0), new THREE.Vector3(-L, yMin, -L), yMax - yMin, '#b3b3b3', 0.25, 0.15]} />
       <TextSprite text={labels.x1} position={[L + 0.6, yMin, -L]} />
       <TextSprite text={labels.x2} position={[-L, yMin, L + 0.6]} />
       <TextSprite text={labels.y} position={[-L, yMax + 0.4, -L]} />
@@ -120,7 +120,7 @@ function Axes({ labels }: { labels: Props['axisLabels'] }) {
 export function RegressionScene({ data, plane, truth, showResiduals, showTruth, axisLabels }: Props) {
   return (
     <Canvas camera={{ position: [10, 6, 12], fov: 45 }} dpr={[1, 2]}>
-      <color attach="background" args={['#0f1320']} />
+      <color attach="background" args={['#1c1c1c']} />
       <AdaptiveFov />
       <ambientLight intensity={0.6} />
       <directionalLight position={[5, 10, 5]} intensity={1.2} />

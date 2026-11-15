@@ -26,7 +26,7 @@ export function Dendrogram({ n, merges, steps, colors }: { n: number; merges: Me
         key={i}
         d={`M${xa},${ys.get(m.a)} V${y(m.height)} H${xb} V${ys.get(m.b)}`}
         fill="none"
-        stroke={done ? '#e8ecf6' : '#4a5470'}
+        stroke={done ? '#f3f1ec' : '#5a5a5a'}
         strokeWidth={done ? 1.2 : 0.8}
       />
     );
@@ -38,7 +38,7 @@ export function Dendrogram({ n, merges, steps, colors }: { n: number; merges: Me
       {order.map((leaf, i) => (
         <circle key={leaf} cx={pad + (i / Math.max(1, n - 1)) * (W - 2 * pad)} cy={H - pad} r={1.8} fill={colors[leaf]} />
       ))}
-      {steps > 0 && <line x1={0} x2={W} y1={y(cutH)} y2={y(cutH)} stroke="#ff6b6b" strokeDasharray="4 3" />}
+      {steps > 0 && <line x1={0} x2={W} y1={y(cutH)} y2={y(cutH)} stroke="#e8553a" strokeDasharray="4 3" />}
     </svg>
   );
 }

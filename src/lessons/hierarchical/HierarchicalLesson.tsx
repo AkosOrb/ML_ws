@@ -192,7 +192,7 @@ export default function HierarchicalLesson() {
       scene={
         <PointCloudScene>
           <Points points={points} colors={colors} radius={0.09} />
-          {segs.length > 0 && <Segments points={segs} color="#9aa7c7" opacity={0.25} />}
+          {segs.length > 0 && <Segments points={segs} color="#b3b3b3" opacity={0.25} />}
         </PointCloudScene>
       }
       overlay={

@@ -1,8 +1,10 @@
+import { localizeNumbers, useLang } from '../i18n/i18n';
 export function Readout({ label, value }: { label: string; value: string | number }) {
+  const { lang } = useLang();
   return (
     <div className="readout">
       <span>{label}</span>
-      <strong>{value}</strong>
+      <strong>{localizeNumbers(String(value), lang)}</strong>
     </div>
   );
 }

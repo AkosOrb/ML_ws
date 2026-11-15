@@ -32,7 +32,7 @@ export function DrawPad({ img, onChange, erase, highlight }: { img: Img; onChang
       onPointerUp={() => (down.current = false)}
     >
       {Array.from(img.px, (v, i) => (
-        <rect key={i} x={(i % img.size) * cell} y={Math.floor(i / img.size) * cell} width={cell - 1} height={cell - 1} fill={v ? '#e8ecf6' : '#1c2335'} />
+        <rect key={i} x={(i % img.size) * cell} y={Math.floor(i / img.size) * cell} width={cell - 1} height={cell - 1} fill={v ? '#f3f1ec' : '#2b2b2b'} />
       ))}
       {highlight && <rect x={highlight.x * cell - 0.5} y={highlight.y * cell - 0.5} width={cell * 3} height={cell * 3} fill="none" stroke="#ffd166" strokeWidth={2} />}
     </svg>

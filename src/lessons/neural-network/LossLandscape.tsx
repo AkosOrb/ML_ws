@@ -59,7 +59,7 @@ export function LossLandscapeScene({ ball, trail, onPick }: { ball: Ball; trail:
 
   return (
     <Canvas camera={{ position: [-5.5, 7, -6.5], fov: 45 }} dpr={[1, 2]}>
-      <color attach="background" args={['#0f1320']} />
+      <color attach="background" args={['#1c1c1c']} />
       <AdaptiveFov />
       <ambientLight intensity={0.6} />
       <directionalLight position={[4, 10, 3]} intensity={1.3} />
@@ -67,7 +67,7 @@ export function LossLandscapeScene({ ball, trail, onPick }: { ball: Ball; trail:
       {trailPts.length > 0 && <Segments points={trailPts} color="#ffffff" />}
       <mesh position={[ball.x, landscape(ball.x, ball.z) + 0.15, ball.z]}>
         <sphereGeometry args={[0.15, 24, 16]} />
-        <meshStandardMaterial color="#ff6b6b" emissive="#ff6b6b" emissiveIntensity={0.3} />
+        <meshStandardMaterial color="#e8553a" emissive="#e8553a" emissiveIntensity={0.3} />
       </mesh>
       <OrbitControls enableDamping makeDefault target={[0, 0.6, 0]} minDistance={4} maxDistance={20} />
     </Canvas>

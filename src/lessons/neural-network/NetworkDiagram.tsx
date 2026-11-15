@@ -34,7 +34,7 @@ export function NetworkDiagram({ model }: { model: Mlp }) {
       {edges}
       {layers.map((n, l) =>
         Array.from({ length: n }, (_, i) => (
-          <circle key={`${l}-${i}`} cx={x(l)} cy={y(l, i)} r={5.5} fill="#1c2335" stroke="#e8ecf6" strokeWidth={1.2} />
+          <circle key={`${l}-${i}`} cx={x(l)} cy={y(l, i)} r={5.5} fill="#2b2b2b" stroke="#f3f1ec" strokeWidth={1.2} />
         )),
       )}
     </svg>
