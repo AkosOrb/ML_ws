@@ -100,24 +100,28 @@ export const lessons: LessonMeta[] = [
     category: 'unsupervised',
     title: { hu: 'k-means klaszterezés', en: 'k-means clustering' },
     teaser: { hu: 'Pontok csoportosítása k darab középpont köré.', en: 'Grouping points around k centres.' },
+    component: lazy(() => import('./k-means/KMeansLesson')),
   },
   {
     id: 'hierarchical',
     category: 'unsupervised',
     title: { hu: 'Hierarchikus klaszterezés', en: 'Hierarchical clustering' },
     teaser: { hu: 'Csoportok egyre nagyobb csoportokba olvasztása, családfaszerűen.', en: 'Merging groups into ever larger groups, like a family tree.' },
+    component: lazy(() => import('./hierarchical/HierarchicalLesson')),
   },
   {
     id: 'pca',
     category: 'unsupervised',
     title: { hu: 'Főkomponens-analízis (PCA)', en: 'Principal component analysis (PCA)' },
     teaser: { hu: 'A legfontosabb irányok megtalálása, kevesebb dimenzióban.', en: 'Finding the most important directions, in fewer dimensions.' },
+    component: lazy(() => import('./pca/PcaLesson')),
   },
   {
     id: 'q-learning',
     category: 'reinforcement',
     title: { hu: 'Q-learning', en: 'Q-learning' },
     teaser: { hu: 'Egy ágens próbálgatással tanulja meg az utat egy rácsvilágban.', en: 'An agent learns its way through a grid world by trial and error.' },
+    component: lazy(() => import('./q-learning/QLearningLesson')),
   },
 ];
 
