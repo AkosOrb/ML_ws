@@ -27,6 +27,7 @@ interface Props {
  */
 export function LessonLayout({ category, title, intro, scene, overlay, controls, sections }: Props) {
   const { t, pick, lang } = useLang();
+  const touch = typeof window !== 'undefined' && window.matchMedia?.('(pointer: coarse)').matches;
   const cat = categories.find((c) => c.id === category)!;
 
   return (
@@ -40,7 +41,7 @@ export function LessonLayout({ category, title, intro, scene, overlay, controls,
         <div className="scene">
           {scene}
           {overlay && <div className="scene-overlay">{overlay}</div>}
-          <div className="scene-hint">{t('sceneHint')}</div>
+          <div className="scene-hint">{t(touch ? 'sceneHintTouch' : 'sceneHint')}</div>
         </div>
         <aside className="panel">
           <h2>{t('parameters')}</h2>

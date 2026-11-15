@@ -1,3 +1,4 @@
+import { AdaptiveFov } from '../../components/AdaptiveFov';
 import { useMemo } from 'react';
 import { Canvas, type ThreeEvent } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -102,6 +103,7 @@ export function AttentionScene({ view, tokens, weights, selected, onSelect, axis
   return (
     <Canvas camera={view === 'arcs' ? { position: [-0.6, 7, wide * 0.62 + 4], fov: 45 } : { position: [5, 3.5, 6], fov: 45 }} dpr={[1, 2]} key={view}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.75} />
       <directionalLight position={[3, 8, 5]} intensity={1.1} />
       {view === 'arcs' ? (

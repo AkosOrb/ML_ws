@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
+import { LessonReview } from './components/LessonReview';
 import { findLesson } from './lessons/registry';
 import { useHashRoute } from './useHashRoute';
 
@@ -13,9 +14,10 @@ export function App() {
     <>
       <Header />
       <main>
-        {Lesson ? (
+        {Lesson && lesson ? (
           <Suspense fallback={<div className="loading">…</div>}>
             <Lesson />
+            <LessonReview key={lesson.id} id={lesson.id} />
           </Suspense>
         ) : (
           <Home />

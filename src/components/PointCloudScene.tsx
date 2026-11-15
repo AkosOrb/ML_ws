@@ -1,3 +1,4 @@
+import { AdaptiveFov } from './AdaptiveFov';
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -48,6 +49,7 @@ export function PointCloudScene({ children, bounds = 7, camera = [7, 5, 8] }: { 
   return (
     <Canvas camera={{ position: camera, fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.7} />
       <directionalLight position={[5, 10, 6]} intensity={1.1} />
       <Bounds size={bounds} />

@@ -1,3 +1,4 @@
+import { AdaptiveFov } from './AdaptiveFov';
 import { useLayoutEffect, useMemo, useRef, type ReactNode } from 'react';
 import { Canvas, type ThreeEvent } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -132,6 +133,7 @@ export function ClassificationScene({ data, proba, heightLabel, surfaceOpacity =
   return (
     <Canvas camera={{ position: [6.5, 6.5, 8], fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.75} />
       <directionalLight position={[4, 10, 6]} intensity={1.1} />
       <gridHelper args={[SIZE, 12, '#3a4460', '#262d40']} position={[0, -0.01, 0]} />
