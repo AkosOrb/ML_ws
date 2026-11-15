@@ -103,3 +103,12 @@ a.lesson-card:hover { transform: translateY(-2px); border-color: var(--accent); 
   .panel { max-height: none; }
   .scene-overlay { max-width: 90%; }
 }
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.chip { padding: 4px 10px; font-size: 0.82rem; border-radius: 999px; }
+.chip.active { background: var(--accent); border-color: var(--accent); color: #0b0e17; font-weight: 600; }
+button.full { width: 100%; margin-bottom: 4px; }
+.legend { display: flex; gap: 12px; font-size: 0.8rem; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+.scene-tabs { position: absolute; top: 12px; right: 12px; display: flex; gap: 6px; z-index: 2; }
+.network-svg { width: 100%; height: auto; display: block; }
