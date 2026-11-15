@@ -1,3 +1,4 @@
+import { AdaptiveFov } from '../../components/AdaptiveFov';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -120,6 +121,7 @@ export function RegressionScene({ data, plane, truth, showResiduals, showTruth, 
   return (
     <Canvas camera={{ position: [10, 6, 12], fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.6} />
       <directionalLight position={[5, 10, 5]} intensity={1.2} />
       <Axes labels={axisLabels} />

@@ -1,3 +1,4 @@
+import { AdaptiveFov } from '../../components/AdaptiveFov';
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -97,6 +98,7 @@ export function CnnScene({ input, maps, probe, labels }: Props) {
   return (
     <Canvas camera={{ position: [-3, 9 + spanZ * 0.35, 9 + spanZ * 0.45], fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.7} />
       <directionalLight position={[3, 12, 6]} intensity={1.1} />
       <MapBars img={input} center={INPUT_C} color="#e8ecf6" scale={1} />

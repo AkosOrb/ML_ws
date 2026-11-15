@@ -1,3 +1,4 @@
+import { AdaptiveFov } from '../../components/AdaptiveFov';
 import { useLayoutEffect, useMemo } from 'react';
 import { Canvas, type ThreeEvent } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -59,6 +60,7 @@ export function LossLandscapeScene({ ball, trail, onPick }: { ball: Ball; trail:
   return (
     <Canvas camera={{ position: [-5.5, 7, -6.5], fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.6} />
       <directionalLight position={[4, 10, 3]} intensity={1.3} />
       <Terrain onPick={onPick} />

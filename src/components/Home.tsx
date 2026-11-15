@@ -1,9 +1,11 @@
 import { useLang } from '../i18n/i18n';
 import { categories, lessons } from '../lessons/registry';
 import { lessonHref } from '../useHashRoute';
+import { useScores } from '../progress';
 
 export function Home() {
   const { t, pick } = useLang();
+  const scores = useScores();
   return (
     <div className="home">
       <section className="hero">
@@ -24,7 +26,14 @@ export function Home() {
                   <>
                     <h3>{pick(l.title)}</h3>
                     <p>{pick(l.teaser)}</p>
-                    <span className="badge">{ready ? t('open') + ' →' : t('comingSoon')}</span>
+                    <div className="card-foot">
+                      <span className="badge">{ready ? t('open') + ' →' : t('comingSoon')}</span>
+                      {scores[l.id] && (
+                        <span className={scores[l.id].best === scores[l.id].total ? 'score full' : 'score'}>
+                          {t('quizDone')} {scores[l.id].best}/{scores[l.id].total}
+                        </span>
+                      )}
+                    </div>
                   </>
                 );
                 return ready ? (

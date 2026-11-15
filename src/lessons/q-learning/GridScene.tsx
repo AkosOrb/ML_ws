@@ -1,3 +1,4 @@
+import { AdaptiveFov } from '../../components/AdaptiveFov';
 import { useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -58,6 +59,7 @@ export function GridScene({ world, Q, agentPos, path, showHeat, showArrows }: Pr
   return (
     <Canvas camera={{ position: [0, 9, 7.5], fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0f1320']} />
+      <AdaptiveFov />
       <ambientLight intensity={0.7} />
       <directionalLight position={[4, 10, 5]} intensity={1.1} />
       {world.cells.map((cell, s) => {
