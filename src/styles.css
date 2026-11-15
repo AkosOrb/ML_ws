@@ -112,3 +112,8 @@ button.full { width: 100%; margin-bottom: 4px; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
 .scene-tabs { position: absolute; top: 12px; right: 12px; display: flex; gap: 6px; z-index: 2; }
 .network-svg { width: 100%; height: auto; display: block; }
+.readout.bars { flex-direction: column; gap: 4px; min-width: 220px; }
+.bar-row { display: grid; grid-template-columns: 34px 1fr 38px; align-items: center; gap: 6px; font-size: 0.8rem; }
+.bar-row em { font-style: normal; text-align: right; color: var(--text); }
+.bar { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+.bar > div { height: 100%; border-radius: 4px; }
