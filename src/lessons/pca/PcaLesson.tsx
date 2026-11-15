@@ -9,7 +9,7 @@ import { useLang } from '../../i18n/i18n';
 import type { Vec3 } from '../../ml/data3d';
 import { flatten, makeEllipsoidCloud, pca } from '../../ml/pca';
 
-const AXIS_COLORS = ['#ff6b6b', '#3ccf91', '#4f9dff'];
+const AXIS_COLORS = ['#e8553a', '#3ccf91', '#4f9dff'];
 
 const txt = {
   s1: { hu: 'Nyújtás 1. irányban', en: 'Stretch along direction 1' },
@@ -159,12 +159,12 @@ function ProjectionPlane({ mean, a, b, size }: { mean: Vec3; a: Vec3; b: Vec3; s
   }, [mean, a, b, size]);
   return (
     <mesh geometry={geometry}>
-      <meshBasicMaterial color="#e8ecf6" transparent opacity={0.08} side={THREE.DoubleSide} depthWrite={false} />
+      <meshBasicMaterial color="#f3f1ec" transparent opacity={0.08} side={THREE.DoubleSide} depthWrite={false} />
     </mesh>
   );
 }
 
-const ramp = [new THREE.Color('#4f9dff'), new THREE.Color('#e8ecf6'), new THREE.Color('#ff6b6b')];
+const ramp = [new THREE.Color('#4f9dff'), new THREE.Color('#f3f1ec'), new THREE.Color('#e8553a')];
 function rampColor(t: number): string {
   const c = t < 0.5 ? ramp[0].clone().lerp(ramp[1], t * 2) : ramp[1].clone().lerp(ramp[2], (t - 0.5) * 2);
   return '#' + c.getHexString();

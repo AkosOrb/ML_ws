@@ -16,8 +16,8 @@ interface Props {
   version: number;
 }
 
-const neg = new THREE.Color('#ff6b6b');
-const zero = new THREE.Color('#1c2335');
+const neg = new THREE.Color('#e8553a');
+const zero = new THREE.Color('#2b2b2b');
 const pos = new THREE.Color('#3ccf91');
 
 function heat(v: number): THREE.Color {
@@ -58,7 +58,7 @@ export function GridScene({ world, Q, agentPos, path, showHeat, showArrows }: Pr
 
   return (
     <Canvas camera={{ position: [0, 9, 7.5], fov: 45 }} dpr={[1, 2]}>
-      <color attach="background" args={['#0f1320']} />
+      <color attach="background" args={['#1c1c1c']} />
       <AdaptiveFov />
       <ambientLight intensity={0.7} />
       <directionalLight position={[4, 10, 5]} intensity={1.1} />
@@ -68,12 +68,12 @@ export function GridScene({ world, Q, agentPos, path, showHeat, showArrows }: Pr
           return (
             <mesh key={s} position={[x, 0.35, z]}>
               <boxGeometry args={[0.96, 0.7, 0.96]} />
-              <meshStandardMaterial color="#4a5470" />
+              <meshStandardMaterial color="#5a5a5a" />
             </mesh>
           );
         }
         const color =
-          cell === 'goal' ? '#3ccf91' : cell === 'trap' ? '#ff6b3d' : showHeat ? '#' + heat(maxQ(Q, s)).getHexString() : '#1c2335';
+          cell === 'goal' ? '#3ccf91' : cell === 'trap' ? '#ff6b3d' : showHeat ? '#' + heat(maxQ(Q, s)).getHexString() : '#2b2b2b';
         const a = bestAction(Q, s);
         const hasQ = Q[s * 4] !== 0 || Q[s * 4 + 1] !== 0 || Q[s * 4 + 2] !== 0 || Q[s * 4 + 3] !== 0;
         return (
@@ -86,7 +86,7 @@ export function GridScene({ world, Q, agentPos, path, showHeat, showArrows }: Pr
               <group position={[x, 0, z]}>
                 <mesh position={[0, 0.45, 0]}>
                   <cylinderGeometry args={[0.03, 0.03, 0.9]} />
-                  <meshStandardMaterial color="#e8ecf6" />
+                  <meshStandardMaterial color="#f3f1ec" />
                 </mesh>
                 <mesh position={[0.17, 0.75, 0]}>
                   <boxGeometry args={[0.32, 0.2, 0.02]} />
@@ -97,7 +97,7 @@ export function GridScene({ world, Q, agentPos, path, showHeat, showArrows }: Pr
             {showArrows && hasQ && (cell === 'empty' || cell === 'start') && (
               <mesh position={[x + ACTIONS[a][0] * 0.18, 0.08, z + ACTIONS[a][1] * 0.18]} rotation={[0, -Math.atan2(ACTIONS[a][1], ACTIONS[a][0]), -Math.PI / 2]}>
                 <coneGeometry args={[0.1, 0.28, 12]} />
-                <meshStandardMaterial color="#e8ecf6" />
+                <meshStandardMaterial color="#f3f1ec" />
               </mesh>
             )}
           </group>

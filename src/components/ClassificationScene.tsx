@@ -11,10 +11,10 @@ export const SURFACE_H = 2.4;
 const RES = 48;
 const SIZE = EXTENT * 2;
 
-export const CLASS_COLORS = ['#4f9dff', '#ff6b6b'] as const;
+export const CLASS_COLORS = ['#4f9dff', '#e8553a'] as const;
 const c0 = new THREE.Color(CLASS_COLORS[0]);
 const c1 = new THREE.Color(CLASS_COLORS[1]);
-const cMid = new THREE.Color('#e8ecf6');
+const cMid = new THREE.Color('#f3f1ec');
 
 /** Blue → white → red, with a sharper band near 0.5 so the boundary stands out. */
 export function probaColor(p: number, out = new THREE.Color()): THREE.Color {
@@ -66,7 +66,7 @@ function SamplePoints({ data, dimmed }: { data: Sample[]; dimmed?: Set<number> }
   useLayoutEffect(() => {
     const mesh = ref.current;
     if (!mesh) return;
-    const dim = new THREE.Color('#3a4460');
+    const dim = new THREE.Color('#4a4a4a');
     data.forEach((d, i) => {
       tmp.position.set(...toScene(d.x1, d.x2, d.label * SURFACE_H));
       tmp.updateMatrix();
@@ -132,11 +132,11 @@ export function ClassificationScene({ data, proba, heightLabel, surfaceOpacity =
   const L = EXTENT + 0.4;
   return (
     <Canvas camera={{ position: [6.5, 6.5, 8], fov: 45 }} dpr={[1, 2]}>
-      <color attach="background" args={['#0f1320']} />
+      <color attach="background" args={['#1c1c1c']} />
       <AdaptiveFov />
       <ambientLight intensity={0.75} />
       <directionalLight position={[4, 10, 6]} intensity={1.1} />
-      <gridHelper args={[SIZE, 12, '#3a4460', '#262d40']} position={[0, -0.01, 0]} />
+      <gridHelper args={[SIZE, 12, '#4a4a4a', '#333333']} position={[0, -0.01, 0]} />
       <mesh
         rotation={[-Math.PI / 2, 0, 0]}
         position={[0, -0.02, 0]}
@@ -147,12 +147,12 @@ export function ClassificationScene({ data, proba, heightLabel, surfaceOpacity =
         }}
       >
         <planeGeometry args={[SIZE, SIZE]} />
-        <meshBasicMaterial color="#141a2b" transparent opacity={0.6} />
+        <meshBasicMaterial color="#202020" transparent opacity={0.6} />
       </mesh>
       <Surface proba={proba} opacity={surfaceOpacity} />
       <SamplePoints data={data} dimmed={dimmed} />
       {children}
-      <Segments points={[[-L, 0, -L], [-L, SURFACE_H, -L]]} color="#9aa7c7" />
+      <Segments points={[[-L, 0, -L], [-L, SURFACE_H, -L]]} color="#b3b3b3" />
       <TextSprite text="x₁" position={[L + 0.3, 0, -L]} />
       <TextSprite text="x₂" position={[-L, 0, L + 0.3]} />
       <TextSprite text={heightLabel} position={[-L, SURFACE_H + 0.35, -L]} size={0.32} />

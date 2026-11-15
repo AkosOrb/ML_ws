@@ -123,7 +123,7 @@ export function LessonReview({ id }: { id: string }) {
 
       <nav className="lesson-nav">
         {prev ? (
-          <a href={lessonHref(prev.id)}>
+          <a href={lessonHref(prev.id)} className="cut">
             <small>{t('prevLesson')}</small>
             {pick(prev.title)}
           </a>
@@ -131,12 +131,12 @@ export function LessonReview({ id }: { id: string }) {
           <span />
         )}
         {next ? (
-          <a href={lessonHref(next.id)} className="next">
+          <a href={lessonHref(next.id)} className="next cut">
             <small>{t('nextLesson')}</small>
             {pick(next.title)}
           </a>
         ) : (
-          <a href="#/" className="next">
+          <a href="#/" className="next cut">
             <small>{t('home')}</small>
             {t('allDone')}
           </a>

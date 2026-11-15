@@ -7,7 +7,7 @@ import { Segments } from '../../components/ClassificationScene';
 import { TextSprite } from '../../components/TextSprite';
 import { displayPos, mixedPos, type Token } from '../../ml/attention';
 
-const ACCENT = '#b07cff';
+const ACCENT = '#e8553a';
 const SPACING = 1.5;
 
 function Arc({ from, to, weight }: { from: number; to: number; weight: number }) {
@@ -40,16 +40,16 @@ function ArcsView({ tokens, weights, selected, onSelect }: { tokens: Token[]; we
             }}
           >
             <boxGeometry args={[1.25, 0.3, 0.6]} />
-            <meshStandardMaterial color={j === selected ? ACCENT : '#2a3248'} emissive={j === selected ? ACCENT : '#000000'} emissiveIntensity={0.3} />
+            <meshStandardMaterial color={j === selected ? ACCENT : '#3a3a3a'} emissive={j === selected ? ACCENT : '#000000'} emissiveIntensity={0.3} />
           </mesh>
-          <TextSprite text={t.text} position={[x(j), 0.6, 0]} size={0.3} color={j === selected ? '#ffffff' : '#c3cbe0'} />
+          <TextSprite text={t.text} position={[x(j), 0.6, 0]} size={0.3} color={j === selected ? '#ffffff' : '#d4d4d4'} />
           {/* weight bar in front of each token */}
           <mesh position={[x(j), 0.02 + weights[j] * 1.2, 1.6]}>
             <boxGeometry args={[0.5, 0.04 + weights[j] * 2.4, 0.5]} />
             <meshStandardMaterial color={ACCENT} transparent opacity={0.35 + 0.65 * weights[j]} />
           </mesh>
           {weights[j] >= 0.05 && (
-            <TextSprite text={`${Math.round(weights[j] * 100)}%`} position={[x(j), 0.3 + weights[j] * 2.4, 1.6]} size={0.24} color="#e6d7ff" />
+            <TextSprite text={`${Math.round(weights[j] * 100)}%`} position={[x(j), 0.3 + weights[j] * 2.4, 1.6]} size={0.24} color="#ffd9cf" />
           )}
           {j !== selected && weights[j] > 0.005 && <Arc from={x(selected)} to={x(j)} weight={weights[j]} />}
         </group>
@@ -63,14 +63,14 @@ function SpaceView({ tokens, weights, selected, axisLabels }: { tokens: Token[];
   const original = displayPos(tokens[selected]);
   return (
     <group>
-      <gridHelper args={[7, 14, '#2a3248', '#1c2335']} position={[0, -0.6, 0]} />
+      <gridHelper args={[7, 14, '#3a3a3a', '#2b2b2b']} position={[0, -0.6, 0]} />
       {tokens.map((t, j) => {
         const p = displayPos(t);
         return (
           <group key={j}>
             <mesh position={p}>
               <sphereGeometry args={[0.1 + 0.12 * weights[j], 20, 14]} />
-              <meshStandardMaterial color={j === selected ? '#ffffff' : '#9aa7c7'} />
+              <meshStandardMaterial color={j === selected ? '#ffffff' : '#b3b3b3'} />
             </mesh>
             <TextSprite text={t.text} position={[p[0], p[1] + 0.32, p[2]]} size={0.26} />
             {weights[j] > 0.01 && <Segments points={[mixed, p]} color={ACCENT} opacity={Math.min(1, 0.15 + weights[j])} />}
@@ -82,9 +82,9 @@ function SpaceView({ tokens, weights, selected, axisLabels }: { tokens: Token[];
         <octahedronGeometry args={[0.22]} />
         <meshStandardMaterial color={ACCENT} emissive={ACCENT} emissiveIntensity={0.6} />
       </mesh>
-      <TextSprite text={axisLabels[0]} position={[3.4, -0.6, 0]} size={0.24} color="#6b7591" />
-      <TextSprite text={axisLabels[1]} position={[0, 2.9, 0]} size={0.24} color="#6b7591" />
-      <TextSprite text={axisLabels[2]} position={[0, -0.6, 3.4]} size={0.24} color="#6b7591" />
+      <TextSprite text={axisLabels[0]} position={[3.4, -0.6, 0]} size={0.24} color="#8a8a8a" />
+      <TextSprite text={axisLabels[1]} position={[0, 2.9, 0]} size={0.24} color="#8a8a8a" />
+      <TextSprite text={axisLabels[2]} position={[0, -0.6, 3.4]} size={0.24} color="#8a8a8a" />
     </group>
   );
 }
@@ -102,7 +102,7 @@ export function AttentionScene({ view, tokens, weights, selected, onSelect, axis
   const wide = tokens.length * SPACING;
   return (
     <Canvas camera={view === 'arcs' ? { position: [-0.6, 7, wide * 0.62 + 4], fov: 45 } : { position: [5, 3.5, 6], fov: 45 }} dpr={[1, 2]} key={view}>
-      <color attach="background" args={['#0f1320']} />
+      <color attach="background" args={['#1c1c1c']} />
       <AdaptiveFov />
       <ambientLight intensity={0.75} />
       <directionalLight position={[3, 8, 5]} intensity={1.1} />

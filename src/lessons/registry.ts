@@ -27,7 +27,7 @@ export const categories: Category[] = [
       hu: 'A gép felcímkézett példákból tanul: megmutatjuk neki a kérdést és a helyes választ is.',
       en: 'The machine learns from labelled examples: we show it both the question and the right answer.',
     },
-    color: '#4f9dff',
+    color: '#e8553a',
   },
   {
     id: 'unsupervised',
@@ -36,7 +36,7 @@ export const categories: Category[] = [
       hu: 'Nincs helyes válasz: a gép maga keres mintázatokat, csoportokat az adatokban.',
       en: 'No right answers: the machine finds patterns and groups in the data on its own.',
     },
-    color: '#3ccf91',
+    color: '#e8553a',
   },
   {
     id: 'reinforcement',
@@ -45,7 +45,7 @@ export const categories: Category[] = [
       hu: 'A gép próbálkozik, jutalmat vagy büntetést kap, és ebből tanulja meg a jó stratégiát.',
       en: 'The machine tries things, gets rewards or penalties, and learns a good strategy from them.',
     },
-    color: '#ffb547',
+    color: '#e8553a',
   },
   {
     id: 'deep',
@@ -54,7 +54,7 @@ export const categories: Category[] = [
       hu: 'Sok rétegből álló neurális hálók, amelyek lépésről lépésre egyre összetettebb jellemzőket tanulnak meg.',
       en: 'Neural networks with many layers that learn ever more complex features, step by step.',
     },
-    color: '#b07cff',
+    color: '#e8553a',
   },
 ];
 

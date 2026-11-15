@@ -50,7 +50,7 @@ function DecisionPlane({ model }: { model: Mlp }) {
   }, [w, b]);
   return (
     <mesh geometry={geometry}>
-      <meshBasicMaterial color="#e8ecf6" transparent opacity={0.1} side={THREE.DoubleSide} depthWrite={false} />
+      <meshBasicMaterial color="#f3f1ec" transparent opacity={0.1} side={THREE.DoubleSide} depthWrite={false} />
     </mesh>
   );
 }
@@ -90,7 +90,7 @@ export function LayerSpaceScene({ model, data, layer, showGrid, showPlane, versi
   const lastHidden = model.sizes.length - 2;
   return (
     <PointCloudScene bounds={S * 2.2} camera={[6.5, 5, 7.5]}>
-      {grid.length > 0 && <Segments points={grid} color="#9aa7c7" opacity={0.22} />}
+      {grid.length > 0 && <Segments points={grid} color="#b3b3b3" opacity={0.22} />}
       <Points points={points} colors={colors} radius={0.08} />
       {showPlane && layer > lastHidden - 0.05 && lastHidden > 0 && <DecisionPlane model={model} />}
     </PointCloudScene>

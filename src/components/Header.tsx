@@ -5,15 +5,20 @@ export function Header() {
   return (
     <header className="site-header">
       <a className="brand" href="#/">
-        <span className="brand-mark" aria-hidden>◆</span> {t('siteTitle')}
+        <span className="brand-mark cut" aria-hidden>
+          ML
+        </span>
+        {t('siteTitle')}
       </a>
-      <button
-        className="lang-toggle"
-        onClick={() => setLang(lang === 'hu' ? 'en' : 'hu')}
-        aria-label={lang === 'hu' ? 'Switch to English' : 'Váltás magyarra'}
-      >
-        {t('languageName')}
-      </button>
+      <div className="header-right">
+        <button
+          className="lang-toggle"
+          onClick={() => setLang(lang === 'hu' ? 'en' : 'hu')}
+          aria-label={lang === 'hu' ? 'Switch to English' : 'Váltás magyarra'}
+        >
+          {t('languageName')}
+        </button>
+      </div>
     </header>
   );
 }

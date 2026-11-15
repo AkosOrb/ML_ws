@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 import { Home } from './components/Home';
 import { LessonReview } from './components/LessonReview';
 import { findLesson } from './lessons/registry';
@@ -23,6 +24,7 @@ export function App() {
           <Home />
         )}
       </main>
+      <Footer />
     </>
   );
 }

@@ -11,10 +11,10 @@ import { DrawPad } from './DrawPad';
 const FILTER_IDS = Object.keys(KERNELS);
 const FILTER_COLORS: Record<string, string> = {
   vertical: '#4f9dff',
-  horizontal: '#ff6b6b',
+  horizontal: '#e8553a',
   diagonal: '#3ccf91',
   blur: '#ffb547',
-  sharpen: '#b07cff',
+  sharpen: '#e8553a',
   outline: '#36d6e7',
 };
 

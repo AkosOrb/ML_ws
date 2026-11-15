@@ -33,12 +33,16 @@ export function LessonLayout({ category, title, intro, scene, overlay, controls,
   return (
     <article className="lesson" style={{ '--accent': cat.color } as React.CSSProperties}>
       <a className="back-link" href="#/">{t('back')}</a>
-      <p className="eyebrow">{pick(cat.title)}</p>
-      <h1>{pick(title)}</h1>
-      <p className="lesson-intro">{pick(intro)}</p>
+      <div className="lesson-head">
+        <div>
+          <p className="eyebrow">{pick(cat.title)}</p>
+          <h1>{pick(title)}</h1>
+        </div>
+        <p className="lesson-intro">{pick(intro)}</p>
+      </div>
 
       <div className="workbench">
-        <div className="scene">
+        <div className="scene cut">
           {scene}
           {overlay && <div className="scene-overlay">{overlay}</div>}
           <div className="scene-hint">{t(touch ? 'sceneHintTouch' : 'sceneHint')}</div>

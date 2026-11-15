@@ -197,7 +197,7 @@ export default function AttentionLesson() {
                 <tr key={i} className={i === sel ? 'sel' : ''} onClick={() => setSelected(i)}>
                   <th>{sentence.tokens[i].text.replace(/[.,]/g, '')}</th>
                   {row.map((v, j) => (
-                    <td key={j} style={{ background: `rgba(176, 124, 255, ${v})` }} title={`${Math.round(v * 100)}%`} />
+                    <td key={j} style={{ background: `rgba(232, 85, 58, ${v})` }} title={`${Math.round(v * 100)}%`} />
                   ))}
                 </tr>
               ))}
