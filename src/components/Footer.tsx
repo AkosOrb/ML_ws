@@ -42,11 +42,6 @@ export function Footer() {
               {pick({ hu: 'Vissza az oldal tetejére', en: 'Back to top' })} <span>↑</span>
             </button>
           </li>
-          <li>
-            <a href="https://github.com/AkosOrb/ML_ws" target="_blank" rel="noreferrer">
-              {pick({ hu: 'Forráskód', en: 'Source code' })} <span>↗</span>
-            </a>
-          </li>
         </ul>
       </div>
       <dl className="footer-facts">
