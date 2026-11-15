@@ -124,3 +124,12 @@ button.full { width: 100%; margin-bottom: 4px; }
 .readout.kernel-math i { font-style: normal; }
 .kernel-grid { display: grid; grid-template-columns: repeat(3, auto); gap: 2px 10px; font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; color: var(--muted); }
 .kernel-grid .on { color: #ffd166; }
+.chip-col { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.chip-col .chip { text-align: left; border-radius: 10px; }
+.readout.attn-matrix { flex-direction: column; pointer-events: auto; }
+.attn-matrix table { border-collapse: collapse; font-size: 0.7rem; }
+.attn-matrix th { text-align: right; padding-right: 6px; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.attn-matrix td { width: 11px; height: 11px; border: 1px solid #262d40; }
+.attn-matrix tr { cursor: pointer; }
+.attn-matrix tr.sel th { color: #ffffff; }
+.attn-matrix tr.sel td { border-color: #b07cff; }
