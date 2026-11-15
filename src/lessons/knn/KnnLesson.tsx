@@ -5,7 +5,7 @@ import { useDataset } from '../../components/DatasetControls';
 import { LessonLayout, type LessonSection } from '../../components/LessonLayout';
 import { pct, Readout } from '../../components/Readout';
 import { useLang } from '../../i18n/i18n';
-import { accuracy } from '../../ml/datasets';
+import { accuracy, EXTENT } from '../../ml/datasets';
 import { knnProba, nearest, type Metric } from '../../ml/knn';
 
 const txt = {
@@ -15,7 +15,12 @@ const txt = {
     en: 'Small k: jumpy, follows every point. Large k: smooth, but blurs details.',
   },
   manhattan: { hu: 'Manhattan-távolság (csak vízszintes/függőleges lépések)', en: 'Manhattan distance (only horizontal/vertical moves)' },
-  probe: { hu: 'Kattints a padlóra egy új pont lerakásához!', en: 'Click the floor to drop a new point!' },
+  probe: {
+    hu: 'Kattints a padlóra egy új pont lerakásához, vagy állítsd a helyét az alábbi csúszkákkal.',
+    en: 'Click the floor to drop a new point, or set its position with the sliders below.',
+  },
+  probeX1: { hu: 'Új pont: x₁', en: 'New point: x₁' },
+  probeX2: { hu: 'Új pont: x₂', en: 'New point: x₂' },
   acc: { hu: 'Pontosság (tanító adaton)', en: 'Accuracy (training data)' },
   probeP: { hu: 'Az új pont: P(piros)', en: 'New point: P(red)' },
   height: { hu: 'P(piros)', en: 'P(red)' },
@@ -176,6 +181,24 @@ export default function KnnLesson() {
           <small className="panel-hint">{pick(txt.probe)}</small>
           <Slider label={pick(txt.k)} hint={pick(txt.kHint)} value={k} min={1} max={31} step={1} onChange={setK} />
           <Toggle label={pick(txt.manhattan)} checked={manhattan} onChange={setManhattan} />
+          <Slider
+            label={pick(txt.probeX1)}
+            value={probe?.x1 ?? 0}
+            min={-EXTENT}
+            max={EXTENT}
+            step={0.05}
+            onChange={(x1) => setProbe((p) => ({ x1, x2: p?.x2 ?? 0 }))}
+            format={(v) => v.toFixed(2)}
+          />
+          <Slider
+            label={pick(txt.probeX2)}
+            value={probe?.x2 ?? 0}
+            min={-EXTENT}
+            max={EXTENT}
+            step={0.05}
+            onChange={(x2) => setProbe((p) => ({ x1: p?.x1 ?? 0, x2 }))}
+            format={(v) => v.toFixed(2)}
+          />
           <h3>{pick({ hu: 'Adatok', en: 'Data' })}</h3>
           {dataControls}
         </>
