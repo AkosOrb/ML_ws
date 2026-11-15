@@ -86,3 +86,16 @@ describe('loss landscape', () => {
     expect(roll(0.95)).toBeLessThan(0.1);
   });
 });
+
+describe('deep narrow network', () => {
+  it('three 3-neuron layers solve XOR better than one', () => {
+    const data = makeDataset('xor', 150, 0.1, 1);
+    const fit = (layers: number) => {
+      const m = createMlp(Array(layers).fill(3), 'tanh', 2);
+      for (let i = 0; i < 1500; i++) mlpStep(m, data, 0.5);
+      return accuracy(data, (a, b) => mlpProba(m, a, b));
+    };
+    expect(fit(3)).toBeGreaterThan(0.97);
+    expect(fit(1)).toBeLessThan(0.9);
+  });
+});
