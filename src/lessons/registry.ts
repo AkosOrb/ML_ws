@@ -119,6 +119,13 @@ export const lessons: LessonMeta[] = [
     component: lazy(() => import('./cnn/CnnLesson')),
   },
   {
+    id: 'attention',
+    category: 'deep',
+    title: { hu: 'Figyelem és Transformer', en: 'Attention & Transformers' },
+    teaser: { hu: 'A chatbotok alapja: minden szó eldönti, melyik másikra figyeljen.', en: 'The basis of chatbots: every word decides which others to attend to.' },
+    component: lazy(() => import('./attention/AttentionLesson')),
+  },
+  {
     id: 'k-means',
     category: 'unsupervised',
     title: { hu: 'k-means klaszterezés', en: 'k-means clustering' },
