@@ -263,7 +263,7 @@ export const reviews: Record<string, LessonReview> = {
   },
   'k-means': {
     summary: [
-      o('A k-közép k csoportra bontja az adatokat címkék nélkül.', 'k-means splits the data into k groups without any labels.'),
+      o('A k-means k csoportra bontja az adatokat címkék nélkül.', 'k-means splits the data into k groups without any labels.'),
       o('Két lépést ismétel: pontok hozzárendelése a legközelebbi középponthoz, majd a középpontok áthelyezése.', 'It repeats two steps: assign points to the nearest centre, then move the centres.'),
       o('Az eredmény a kezdőpontoktól függ; a k-means++ okosabb kezdést ad.', 'The result depends on the starting points; k-means++ gives a smarter start.'),
     ],
@@ -275,13 +275,13 @@ export const reviews: Record<string, LessonReview> = {
         explain: o('Ez csökkenti a klaszteren belüli négyzetes távolságot.', 'This reduces the within-cluster squared distance.'),
       },
       {
-        q: o('Kell-e a k-középnek címkézett adat?', 'Does k-means need labelled data?'),
+        q: o('Kell-e a k-means-nek címkézett adat?', 'Does k-means need labelled data?'),
         options: [o('Nem, felügyelet nélküli módszer', 'No, it is an unsupervised method'), o('Igen, minden ponthoz', 'Yes, for every point'), o('Csak a középpontokhoz', 'Only for the centres')],
         answer: 0,
         explain: o('Maga keresi meg a csoportokat.', 'It finds the groups by itself.'),
       },
       {
-        q: o('Milyen alakú klasztereket talál jól a k-közép?', 'What shape of clusters does k-means find well?'),
+        q: o('Milyen alakú klasztereket talál jól a k-means?', 'What shape of clusters does k-means find well?'),
         options: [o('Kerek, hasonló méretű csoportokat', 'Round groups of similar size'), o('Hosszú, csavart spirálokat', 'Long, twisted spirals'), o('Egymásba ágyazott gyűrűket', 'Nested rings')],
         answer: 0,
         explain: o('A legközelebbi középponthoz rendelés gömbszerű határokat ad.', 'Assigning to the nearest centre gives sphere-like boundaries.'),
@@ -311,7 +311,7 @@ export const reviews: Record<string, LessonReview> = {
         q: o('Kell-e előre megadni a klaszterek számát?', 'Do you need to fix the number of clusters in advance?'),
         options: [o('Nem, utólag választhatunk a dendrogramon', 'No, you can choose afterwards on the dendrogram'), o('Igen, mindig', 'Yes, always'), o('Csak páros számot lehet', 'Only an even number is allowed')],
         answer: 0,
-        explain: o('Ez a módszer egyik nagy előnye a k-középpel szemben.', 'This is one of its big advantages over k-means.'),
+        explain: o('Ez a módszer egyik nagy előnye a k-means-szel szemben.', 'This is one of its big advantages over k-means.'),
       },
     ],
   },
@@ -344,7 +344,7 @@ export const reviews: Record<string, LessonReview> = {
   },
   'q-learning': {
     summary: [
-      o('A Q-tanulás minden állapot–cselekvés párhoz megtanulja, mennyi jövőbeli jutalom várható.', 'Q-learning learns how much future reward to expect for every state–action pair.'),
+      o('A Q-learning minden állapot–cselekvés párhoz megtanulja, mennyi jövőbeli jutalom várható.', 'Q-learning learns how much future reward to expect for every state–action pair.'),
       o('Az ágens egyensúlyoz a felfedezés (ε) és a már ismert jó lépések kihasználása között.', 'The agent balances exploration (ε) against exploiting known good moves.'),
       o('A γ diszkontfaktor szabja meg, mennyire számít a távoli jövő.', 'The discount factor γ sets how much the distant future matters.'),
     ],

@@ -11,7 +11,7 @@ export function scrollToCategory(id: string) {
 }
 
 export function Footer() {
-  const { pick } = useLang();
+  const { pick, lang, setLang } = useLang();
   const first = lessons.find((l) => l.component);
   return (
     <footer className="site-footer">
@@ -44,7 +44,9 @@ export function Footer() {
       </div>
       <div className="footer-bottom label">
         <span>© 2026 ML {pick({ hu: 'műhely', en: 'Workshop' })}</span>
-        <span>HU / EN</span>
+        <button className="footer-lang label" onClick={() => setLang(lang === 'hu' ? 'en' : 'hu')}>
+          {pick({ hu: 'Switch to English →', en: 'Váltás magyarra →' })}
+        </button>
       </div>
     </footer>
   );

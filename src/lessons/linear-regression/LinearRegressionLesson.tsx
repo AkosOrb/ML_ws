@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ButtonRow, Slider, Toggle } from '../../components/Controls';
 import { LessonLayout, type LessonSection } from '../../components/LessonLayout';
-import { useLang } from '../../i18n/i18n';
+import { localizeNumbers, useLang } from '../../i18n/i18n';
 import { generateData, gradientStep, mse, TRUE_PLANE, type Plane } from '../../ml/linearRegression';
 import { LossChart } from '../../components/LossChart';
 import { RegressionScene } from './RegressionScene';
@@ -159,7 +159,8 @@ const sections: LessonSection[] = [
 ];
 
 export default function LinearRegressionLesson() {
-  const { pick, t } = useLang();
+  const { pick, t, lang } = useLang();
+  const fmtL = (v: number) => localizeNumbers(fmt(v), lang);
   const [count, setCount] = useState(60);
   const [noise, setNoise] = useState(0.6);
   const [seed, setSeed] = useState(1);
@@ -268,14 +269,14 @@ export default function LinearRegressionLesson() {
     <>
       <div className="readout">
         <span>{pick(txt.loss)}</span>
-        <strong>{fmt(loss)}</strong>
+        <strong>{fmtL(loss)}</strong>
       </div>
       <div className="readout">
         <span>{pick(txt.steps)}</span>
         <strong>{steps}</strong>
       </div>
       <div className="readout equation">
-        ŷ = {fmt(plane.w1)}·x₁ {plane.w2 < 0 ? '−' : '+'} {fmt(Math.abs(plane.w2))}·x₂ {plane.b < 0 ? '−' : '+'} {fmt(Math.abs(plane.b))}
+        ŷ = {fmtL(plane.w1)}·x₁ {plane.w2 < 0 ? '−' : '+'} {fmtL(Math.abs(plane.w2))}·x₂ {plane.b < 0 ? '−' : '+'} {fmtL(Math.abs(plane.b))}
       </div>
       <LossChart history={history} label={pick(txt.lossChart)} />
       {diverged && <div className="warning">{pick(txt.diverged)}</div>}

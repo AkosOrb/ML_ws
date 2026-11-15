@@ -25,6 +25,10 @@ export const ui = {
     hu: 'Húzd az ujjad a forgatáshoz, csípj a nagyításhoz.',
     en: 'Drag to rotate, pinch to zoom.',
   },
+  scene3d: {
+    hu: 'interaktív 3D-s jelenet; minden beállítás a paraméterpanelen is elérhető',
+    en: 'interactive 3D scene; every setting is also available in the parameter panel',
+  },
   whatIsIt: { hu: 'Mi ez?', en: 'What is it?' },
   howItWorks: { hu: 'Hogyan működik?', en: 'How does it work?' },
   tryIt: { hu: 'Próbáld ki!', en: 'Try it!' },

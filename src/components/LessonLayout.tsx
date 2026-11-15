@@ -42,7 +42,7 @@ export function LessonLayout({ category, title, intro, scene, overlay, controls,
       </div>
 
       <div className="workbench">
-        <div className="scene cut">
+        <div className="scene cut" role="group" aria-label={`${pick(title)}: ${t('scene3d')}`}>
           {scene}
           {overlay && <div className="scene-overlay">{overlay}</div>}
           <div className="scene-hint">{t(touch ? 'sceneHintTouch' : 'sceneHint')}</div>

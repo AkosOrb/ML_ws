@@ -52,7 +52,7 @@ export function Home() {
         <div className="hero-top">
           <div className="hero-art dark">
             <HeroArt />
-            <span className="label">fig. 01 — ŷ = w·x + b</span>
+            <span className="label math-label">fig. 01 — ŷ = w·x + b</span>
           </div>
           <div className="hero-side">
             <div className="tags label">
