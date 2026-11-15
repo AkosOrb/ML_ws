@@ -1,7 +1,7 @@
 import { lazy, type ComponentType, type LazyExoticComponent } from 'react';
 import type { Bilingual } from '../i18n/i18n';
 
-export type CategoryId = 'supervised' | 'unsupervised' | 'reinforcement';
+export type CategoryId = 'supervised' | 'unsupervised' | 'reinforcement' | 'deep';
 
 export interface Category {
   id: CategoryId;
@@ -47,6 +47,15 @@ export const categories: Category[] = [
     },
     color: '#ffb547',
   },
+  {
+    id: 'deep',
+    title: { hu: 'Mélytanulás', en: 'Deep learning' },
+    summary: {
+      hu: 'Sok rétegből álló neurális hálók, amelyek lépésről lépésre egyre összetettebb jellemzőket tanulnak meg.',
+      en: 'Neural networks with many layers that learn ever more complex features, step by step.',
+    },
+    color: '#b07cff',
+  },
 ];
 
 export const lessons: LessonMeta[] = [
@@ -90,10 +99,24 @@ export const lessons: LessonMeta[] = [
   },
   {
     id: 'neural-network',
-    category: 'supervised',
+    category: 'deep',
     title: { hu: 'Neurális háló', en: 'Neural network' },
     teaser: { hu: 'Rétegekbe szervezett mesterséges neuronok, és a gradiens ereszkedés.', en: 'Layers of artificial neurons, and gradient descent.' },
     component: lazy(() => import('./neural-network/NeuralNetworkLesson')),
+  },
+  {
+    id: 'deep-network',
+    category: 'deep',
+    title: { hu: 'Mély háló belülről', en: 'Inside a deep network' },
+    teaser: { hu: 'Rétegről rétegre: hogyan hajtogatja a háló a teret, amíg az osztályok szétválnak.', en: 'Layer by layer: how the network folds space until the classes come apart.' },
+    component: lazy(() => import('./deep-network/DeepNetworkLesson')),
+  },
+  {
+    id: 'cnn',
+    category: 'deep',
+    title: { hu: 'Konvolúciós háló (CNN)', en: 'Convolutional network (CNN)' },
+    teaser: { hu: 'Szűrők csúsznak végig a képen, és éleket, formákat keresnek.', en: 'Filters slide across an image, looking for edges and shapes.' },
+    component: lazy(() => import('./cnn/CnnLesson')),
   },
   {
     id: 'k-means',

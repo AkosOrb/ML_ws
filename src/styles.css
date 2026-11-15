@@ -117,3 +117,10 @@ button.full { width: 100%; margin-bottom: 4px; }
 .bar-row em { font-style: normal; text-align: right; color: var(--text); }
 .bar { height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
 .bar > div { height: 100%; border-radius: 4px; }
+.draw-pad { width: 100%; max-width: 240px; display: block; margin: 6px auto 10px; touch-action: none; cursor: crosshair; border-radius: 6px; }
+.kernel-edit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 6px; }
+.kernel-edit input { width: 100%; font: inherit; font-family: ui-monospace, Menlo, monospace; background: var(--surface-2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 4px 6px; text-align: center; }
+.readout.kernel-math { flex-direction: column; gap: 4px; }
+.readout.kernel-math i { font-style: normal; }
+.kernel-grid { display: grid; grid-template-columns: repeat(3, auto); gap: 2px 10px; font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; color: var(--muted); }
+.kernel-grid .on { color: #ffd166; }

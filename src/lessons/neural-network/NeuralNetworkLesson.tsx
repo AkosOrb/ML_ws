@@ -305,7 +305,7 @@ export default function NeuralNetworkLesson() {
 
   return (
     <LessonLayout
-      category="supervised"
+      category="deep"
       title={{ hu: 'Neurális háló', en: 'Neural network' }}
       intro={{
         hu: 'Rétegekbe szervezett mesterséges neuronok, amelyek gradiens ereszkedéssel bármilyen alakú határt megtanulnak.',
