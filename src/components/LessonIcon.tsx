@@ -66,6 +66,38 @@ export function LessonIcon({ id }: { id: string }) {
       );
       break;
     }
+    case 'forward-pass':
+      body = (
+        <>
+          <rect x="8" y="30" width="24" height="24" {...s} />
+          <path d="M14 36 h4 v4 h-4 z M22 44 h4 v4 h-4 z" fill="currentColor" />
+          <path d="M32 42 L52 26 M32 42 L52 58 M58 26 L80 42 M58 58 L80 42" {...s} strokeWidth={1} />
+          {ring(55, 26, 5, 'a')}
+          {ring(55, 58, 5, 'b')}
+          {dot(84, 42, 5, 'c')}
+          <path d="M60 80 H90 M84 74 L90 80 L84 86" {...s} />
+        </>
+      );
+      break;
+    case 'overfitting':
+      body = (
+        <>
+          <path d="M10 90 V10 M10 90 H90" {...s} />
+          <path d="M14 70 C24 20 30 86 40 40 C48 8 54 84 62 36 C68 12 76 76 86 26" {...s} />
+          <path d="M14 66 C40 50 60 44 86 32" {...s} strokeDasharray="4 4" strokeWidth={1} />
+          {[[22, 46], [36, 62], [50, 30], [64, 52], [80, 34]].map(([x, y]) => dot(x, y, 3))}
+        </>
+      );
+      break;
+    case 'hallucination':
+      body = (
+        <>
+          <path d="M14 20 H86 V64 H50 L34 80 V64 H14 Z" {...s} />
+          <path d="M44 34 C44 26 58 26 58 34 C58 40 51 41 51 48" {...s} />
+          {dot(51, 56, 3)}
+        </>
+      );
+      break;
     case 'deep-network':
       body = (
         <>
