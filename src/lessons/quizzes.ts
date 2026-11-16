@@ -450,4 +450,31 @@ export const reviews: Record<string, LessonReview> = {
       },
     ],
   },
+  neuron: {
+    summary: [
+      o('Egy neuron megszorozza a bemeneteit a súlyokkal, összeadja őket, és hozzáadja az eltolást: z = w·x + b.', 'A neuron multiplies its inputs by the weights, adds them up and adds the bias: z = w·x + b.'),
+      o('Az aktivációs függvény (szigmoid, tanh, ReLU…) adja a kimenetet; nélküle a háló csak lineáris határt tudna.', 'The activation function (sigmoid, tanh, ReLU…) gives the output; without it the network could only draw linear boundaries.'),
+      o('Egy neuron döntési határa egyenes: az AND-et és az OR-t megtanulja, az XOR-t nem. Ahhoz rejtett réteg kell.', "A single neuron's decision boundary is a straight line: it can learn AND and OR, but not XOR. That needs a hidden layer."),
+    ],
+    quiz: [
+      {
+        q: o('Mit csinál az eltolás (b)?', 'What does the bias (b) do?'),
+        options: [o('Eltolja a küszöböt, így a neuron könnyebben vagy nehezebben tüzel', 'Shifts the threshold, so the neuron fires more or less easily'), o('Megszorozza a bemeneteket', 'Multiplies the inputs'), o('Kiválasztja az aktivációs függvényt', 'Chooses the activation function')],
+        answer: 0,
+        explain: o('b minden bemenettől függetlenül hozzáadódik z-hez, így elmozdítja a döntési határt.', 'b is added to z regardless of the inputs, so it moves the decision boundary.'),
+      },
+      {
+        q: o('Mi a kimenete egy ReLU-neuronnak, ha z = −1,5?', 'What does a ReLU neuron output when z = −1.5?'),
+        options: [o('−1,5', '−1.5'), o('0', '0'), o('1', '1')],
+        answer: 1,
+        explain: o('ReLU(z) = max(0, z), negatív z-re 0.', 'ReLU(z) = max(0, z), so negative z gives 0.'),
+      },
+      {
+        q: o('Miért nem tudja egyetlen neuron az XOR-t?', 'Why can a single neuron not learn XOR?'),
+        options: [o('Mert túl kicsi a tanulási ráta', 'Because the learning rate is too small'), o('Mert a döntési határa egyenes, és az XOR pontjait nem választja el egyenes', 'Because its decision boundary is a straight line, and no line separates the XOR points'), o('Mert csak két bemenete van', 'Because it only has two inputs')],
+        answer: 1,
+        explain: o('Az XOR nem lineárisan szeparálható; ehhez legalább egy rejtett réteg kell.', 'XOR is not linearly separable; it needs at least one hidden layer.'),
+      },
+    ],
+  },
 };

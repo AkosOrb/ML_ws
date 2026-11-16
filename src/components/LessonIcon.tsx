@@ -66,6 +66,17 @@ export function LessonIcon({ id }: { id: string }) {
       );
       break;
     }
+    case 'neuron':
+      body = (
+        <>
+          {[22, 50, 78].map((y) => dot(14, y, 4, `i${y}`))}
+          <path d="M18 22 L44 46 M18 50 L42 50 M18 78 L44 54" {...s} />
+          <circle cx="54" cy="50" r="12" {...s} />
+          <path d="M49 50 h10 M54 45 v10" {...s} strokeWidth={1.5} />
+          <path d="M66 50 H74 M74 62 C80 62 80 38 88 38" {...s} />
+        </>
+      );
+      break;
     case 'forward-pass':
       body = (
         <>
