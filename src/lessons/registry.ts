@@ -98,6 +98,13 @@ export const lessons: LessonMeta[] = [
     component: lazy(() => import('./svm/SvmLesson')),
   },
   {
+    id: 'neuron',
+    category: 'deep',
+    title: { hu: 'A neuron', en: 'The neuron' },
+    teaser: { hu: 'Bemenetek, súlyok, eltolás, aktiváció: így számol a háló legkisebb egysége.', en: 'Inputs, weights, bias, activation: how the smallest unit of a network computes.' },
+    component: lazy(() => import('./neuron/NeuronLesson')),
+  },
+  {
     id: 'neural-network',
     category: 'deep',
     title: { hu: 'Neurális háló', en: 'Neural network' },
