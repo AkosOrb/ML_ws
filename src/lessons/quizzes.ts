@@ -369,4 +369,85 @@ export const reviews: Record<string, LessonReview> = {
       },
     ],
   },
+  'forward-pass': {
+    summary: [
+      o('A bemenet számok sora: egy 7×7-es képnél 49 pixelérték. A háló csak ezeket a számokat kapja meg.', 'The input is a list of numbers: for a 7×7 image, 49 pixel values. The network only receives these numbers.'),
+      o('Minden rejtett neuron súlyozott összeget számol, és a ReLU után vagy hallgat, vagy tüzel. Az első réteg egyszerű jellemzőket keres, a következő ezek kombinációit.', 'Each hidden neuron computes a weighted sum and after ReLU it is either silent or fires. The first layer looks for simple features, the next for combinations of them.'),
+      o('A kimeneti réteg pontszámaiból a softmax valószínűségeket csinál, amelyek összege mindig 100%.', 'Softmax turns the output scores into probabilities that always add up to 100%.'),
+    ],
+    quiz: [
+      {
+        q: o('Mit kap meg ténylegesen a háló bemenetként egy képből?', 'What does the network actually receive from an image?'),
+        options: [o('Magát a képet, ahogy mi látjuk', 'The picture itself, as we see it'), o('A pixelek számértékeit egy számsorban', 'The pixel values as a list of numbers'), o('A kép leírását szavakkal', 'A description of the image in words')],
+        answer: 1,
+        explain: o('A háló csak számokkal dolgozik: minden pixel egy bemeneti szám.', 'The network works only with numbers: each pixel is one input number.'),
+      },
+      {
+        q: o('Mit jelent, ha egy ReLU-s rejtett neuron értéke 0?', 'What does it mean when a ReLU hidden neuron is 0?'),
+        options: [o('Elromlott', 'It is broken'), o('A súlyozott összege negatív volt, ezért most hallgat', 'Its weighted sum was negative, so it is silent now'), o('Ez a neuron a kimenet', 'It is the output neuron')],
+        answer: 1,
+        explain: o('ReLU(s) = max(0, s): negatív összegnél a neuron nem ad tovább jelet.', 'ReLU(s) = max(0, s): with a negative sum the neuron passes nothing on.'),
+      },
+      {
+        q: o('Miért ad a háló mindig valamilyen választ, még egy értelmetlen rajzra is?', 'Why does the network always give some answer, even for a meaningless drawing?'),
+        options: [o('Mert a softmax kimenete mindig 100%-ra összegződik', 'Because the softmax output always adds up to 100%'), o('Mert minden rajzot ismer', 'Because it knows every drawing'), o('Mert a rejtett rétegek kikapcsolnak', 'Because the hidden layers switch off')],
+        answer: 0,
+        explain: o('A softmax mindig eloszlást ad az osztályokra; „egyik sem” lehetőség nincs benne.', 'Softmax always gives a distribution over the classes; there is no "none of them" option.'),
+      },
+    ],
+  },
+  overfitting: {
+    summary: [
+      o('Túltanuláskor a modell a tanítóadatot (és benne a zajt) bemagolja: a tanító hiba csökken, a teszthiba nő.', 'When overfitting, the model memorises the training data (noise included): training loss falls while test loss rises.'),
+      o('A teljesítményt mindig olyan adaton mérjük, amit a modell tanítás közben nem látott.', 'Performance is always measured on data the model did not see during training.'),
+      o('Ellenszerek: több adat, kisebb háló, regularizáció (L2, dropout) és korai leállítás.', 'Remedies: more data, a smaller network, regularisation (L2, dropout) and early stopping.'),
+    ],
+    quiz: [
+      {
+        q: o('Melyik jel utal túltanulásra?', 'Which sign points to overfitting?'),
+        options: [o('Mindkét hiba magas', 'Both losses are high'), o('A tanító hiba alacsony, a teszthiba nő', 'Training loss is low while test loss rises'), o('Mindkét hiba együtt csökken', 'Both losses fall together')],
+        answer: 1,
+        explain: o('A két görbe szétválása azt jelzi, hogy a modell már a zajt tanulja.', 'The two curves parting means the model is now learning the noise.'),
+      },
+      {
+        q: o('Mit csinál az L2-regularizáció?', 'What does L2 regularisation do?'),
+        options: [o('Bünteti a nagy súlyokat, így simább modellt kényszerít ki', 'Penalises large weights, forcing a smoother model'), o('Több tanítóadatot generál', 'Generates more training data'), o('Növeli a tanulási rátát', 'Increases the learning rate')],
+        answer: 0,
+        explain: o('A λ·Σw² tag minden lépésben a 0 felé húzza a súlyokat.', 'The λ·Σw² term pulls the weights towards 0 at every step.'),
+      },
+      {
+        q: o('Mi a korai leállítás?', 'What is early stopping?'),
+        options: [o('A tanítást azonnal az első lépés után leállítjuk', 'Stopping training right after the first step'), o('Ott állunk meg, ahol a validációs hiba a legkisebb volt', 'Stopping where the validation loss was lowest'), o('A tesztpontokat kivesszük az adatból', 'Removing the test points from the data')],
+        answer: 1,
+        explain: o('A validációs hiba minimuma után a modell már jellemzően rosszabbul általánosít.', 'After the validation loss minimum the model typically generalises worse.'),
+      },
+    ],
+  },
+  hallucination: {
+    summary: [
+      o('A háló kimenete mindig 100%-ra összegződő eloszlás, ezért ismeretlen bemenetre is magabiztosan válaszolhat.', "The network's output always adds up to 100%, so it can answer confidently even for unfamiliar input."),
+      o('A nyelvi modell a valószínű következő szót választja, nem az igazat: ezért keverhet össze tényeket folyékony mondatokká.', 'A language model picks the likely next word, not the true one, so it can mix facts into fluent sentences.'),
+      o('Csökkenti: visszakeresés (RAG), több adat és kontextus, a bizonytalanság jelzése és az ellenőrzés.', 'It is reduced by retrieval (RAG), more data and context, signalling uncertainty and checking.'),
+    ],
+    quiz: [
+      {
+        q: o('Miért sorolja be a háló magabiztosan a véletlen zajt is?', 'Why does the network confidently classify random noise?'),
+        options: [o('Mert nincs „nem tudom” kimenete, és a zajhoz hasonlót sosem látott', 'Because it has no "I don\'t know" output and never saw anything like noise'), o('Mert a zaj valójában egy alakzat', 'Because noise really is a shape'), o('Mert túl kevés neuronja van', 'Because it has too few neurons')],
+        answer: 0,
+        explain: o('Eloszláson kívüli bemenetnél a softmax akkor is kiválaszt egy osztályt.', 'For out-of-distribution input softmax still picks a class.'),
+      },
+      {
+        q: o('Miért mondta a kis nyelvi modell, hogy „Magyarország fővárosa Róma”?', 'Why did the small language model say "The capital of Hungary is Rome"?'),
+        options: [o('Mert így szerepelt a tanítószövegben', 'Because the training text said so'), o('Mert csak az utolsó szót látta, és utána több város is előfordult', 'Because it only saw the last word, and several cities followed it'), o('Mert véletlen betűket ír', 'Because it writes random letters')],
+        answer: 1,
+        explain: o('Rövid kontextusból a modell nem tudja, melyik országról van szó, csak azt, hogy egy városnév jön.', 'With a short context the model cannot tell which country it is about, only that a city name comes next.'),
+      },
+      {
+        q: o('Mit csinál a visszakeresés (RAG)?', 'What does retrieval (RAG) do?'),
+        options: [o('Gyorsabbá teszi a modellt', 'Makes the model faster'), o('Válasz előtt tényeket keres egy tudásbázisban, és azokra támaszkodik', 'Looks up facts in a knowledge base before answering and relies on them'), o('Megnöveli a hőmérsékletet', 'Raises the temperature')],
+        answer: 1,
+        explain: o('A modell így nem csak a „valószínű”, hanem a forrással alátámasztott folytatást választja.', 'That way the model picks a continuation backed by a source, not just a likely one.'),
+      },
+    ],
+  },
 };

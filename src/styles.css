@@ -259,6 +259,9 @@ button.full { width: 100%; margin-bottom: 4px; }
 .bar-row em { font-style: normal; text-align: right; color: var(--text); }
 .bar { height: 8px; background: var(--surface-2); overflow: hidden; }
 .bar > div { height: 100%; }
+.corpus-list { margin: 6px 0 0; padding-left: 18px; font-size: var(--fs-2); }
+.corpus-list li { margin-bottom: 2px; }
+.weight-map { width: 100%; max-width: 150px; display: block; margin: 6px auto 8px; }
 .draw-pad { width: 100%; max-width: 240px; display: block; margin: 6px auto 10px; touch-action: none; cursor: crosshair; }
 .kernel-edit { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 6px; }
 .kernel-edit input { width: 100%; font-family: var(--mono); background: var(--paper-2); color: var(--ink); border: 1px solid var(--ink); padding: 4px 6px; text-align: center; }

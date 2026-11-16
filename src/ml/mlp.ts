@@ -72,8 +72,11 @@ export function mlpLoss(m: Mlp, data: Sample[]): number {
   return s / data.length;
 }
 
-/** One full-batch gradient-descent step with backpropagation. Mutates and returns m. */
-export function mlpStep(m: Mlp, data: Sample[], lr: number): Mlp {
+/**
+ * One full-batch gradient-descent step with backpropagation. Mutates and returns m.
+ * `l2` adds weight decay (L2 regularisation): every weight is also pulled towards 0.
+ */
+export function mlpStep(m: Mlp, data: Sample[], lr: number, l2 = 0): Mlp {
   const L = m.sizes.length - 1;
   const gW = m.W.map((w) => new Float64Array(w.length));
   const gB = m.B.map((b) => new Float64Array(b.length));
@@ -102,8 +105,17 @@ export function mlpStep(m: Mlp, data: Sample[], lr: number): Mlp {
   }
   const n = Math.max(1, data.length);
   for (let l = 0; l < L; l++) {
-    for (let i = 0; i < m.W[l].length; i++) m.W[l][i] -= (lr * gW[l][i]) / n;
+    for (let i = 0; i < m.W[l].length; i++) m.W[l][i] -= lr * (gW[l][i] / n + l2 * m.W[l][i]);
     for (let i = 0; i < m.B[l].length; i++) m.B[l][i] -= (lr * gB[l][i]) / n;
   }
   return m;
+}
+
+/** Deep copy, e.g. to remember the best model seen so far. */
+export const cloneMlp = (m: Mlp): Mlp => ({ ...m, sizes: [...m.sizes], W: m.W.map((w) => w.slice()), B: m.B.map((b) => b.slice()) });
+
+/** Copies the weights of `src` into `dst` in place (same architecture). */
+export function copyMlpInto(dst: Mlp, src: Mlp) {
+  src.W.forEach((w, l) => dst.W[l].set(w));
+  src.B.forEach((b, l) => dst.B[l].set(b));
 }

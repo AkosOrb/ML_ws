@@ -105,11 +105,25 @@ export const lessons: LessonMeta[] = [
     component: lazy(() => import('./neural-network/NeuralNetworkLesson')),
   },
   {
+    id: 'forward-pass',
+    category: 'deep',
+    title: { hu: 'Bemenettől a kimenetig', en: 'From input to output' },
+    teaser: { hu: 'Egy rajz útja a hálón át: pixelek, rejtett neuronok, valószínűségek.', en: 'A drawing travels through the network: pixels, hidden neurons, probabilities.' },
+    component: lazy(() => import('./forward-pass/ForwardPassLesson')),
+  },
+  {
     id: 'deep-network',
     category: 'deep',
     title: { hu: 'Mély háló belülről', en: 'Inside a deep network' },
     teaser: { hu: 'Rétegről rétegre: hogyan hajtogatja a háló a teret, amíg az osztályok szétválnak.', en: 'Layer by layer: how the network folds space until the classes come apart.' },
     component: lazy(() => import('./deep-network/DeepNetworkLesson')),
+  },
+  {
+    id: 'overfitting',
+    category: 'deep',
+    title: { hu: 'Túltanulás és általánosítás', en: 'Overfitting and generalisation' },
+    teaser: { hu: 'Amikor a háló bemagol tanulás helyett, és hogyan lehet ezt megakadályozni.', en: 'When the network memorises instead of learning, and how to prevent it.' },
+    component: lazy(() => import('./overfitting/OverfittingLesson')),
   },
   {
     id: 'cnn',
@@ -124,6 +138,13 @@ export const lessons: LessonMeta[] = [
     title: { hu: 'Figyelem és Transformer', en: 'Attention & Transformers' },
     teaser: { hu: 'A chatbotok alapja: minden szó eldönti, melyik másikra figyeljen.', en: 'The basis of chatbots: every word decides which others to attend to.' },
     component: lazy(() => import('./attention/AttentionLesson')),
+  },
+  {
+    id: 'hallucination',
+    category: 'deep',
+    title: { hu: 'Hallucináció', en: 'Hallucination' },
+    teaser: { hu: 'Miért mond a modell magabiztosan valótlant? Zaj, megtévesztés és egy kis nyelvi modell.', en: 'Why does a model confidently say false things? Noise, adversarial pixels and a tiny language model.' },
+    component: lazy(() => import('./hallucination/HallucinationLesson')),
   },
   {
     id: 'k-means',
